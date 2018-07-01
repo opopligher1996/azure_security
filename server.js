@@ -1,8 +1,8 @@
- OpenShift sample Node application
+//  OpenShift sample Node application
 var express = require('express'),
     app     = express(),
     morgan  = require('morgan');
-
+    
 Object.assign=require('object-assign')
 
 app.engine('html', require('ejs').renderFile);
@@ -77,18 +77,25 @@ app.get('/', function (req, res) {
   }
 });
 
-app.get('/azure', function (req, res) {
+app.get('/pagecount', function (req, res) {
   // try to initialize the db on every request if it's not already
   // initialized.
-    console.log("hi");
+  if (!db) {
+    initDb(function(err){});
+  }
+  if (db) {
+    db.collection('counts').count(function(err, count ){
+      res.send('{ pageCount: ' + count + '}');
+    });
+  } else {
     res.send('{ pageCount: -1 }');
+  }
 });
 
 // error handling
 app.use(function(err, req, res, next){
-  console.log("hi");
   console.error(err.stack);
-  res.send('Something bad happened!');
+  res.status(500).send('Something bad happened!');
 });
 
 initDb(function(err){
