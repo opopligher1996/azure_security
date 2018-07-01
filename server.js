@@ -86,8 +86,9 @@ app.get('/azure', function (req, res) {
 
 // error handling
 app.use(function(err, req, res, next){
+  console.log("hi");
   console.error(err.stack);
-  res.status(500).send('Something bad happened!');
+  res.send('Something bad happened!');
 });
 
 initDb(function(err){
