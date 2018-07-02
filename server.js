@@ -61,8 +61,8 @@ var initDb = function(callback) {
 };
 
 app.get('/:location', function (req, res) {
-  var location = req.params.location;
-  res.render('index.ejs', { 'message': location});
+  var file = req.params.location;
+  res.render('index.ejs', { 'message': file});
 });
 
 app.get('/pagecount', function (req, res) {
