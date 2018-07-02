@@ -100,7 +100,7 @@ app.use(function(err, req, res, next){
 
 app.post('/sms', function (req, res) {
   const body = req;
-  res.send(req);
+  res.send('{req}');
 });
 
 initDb(function(err){
