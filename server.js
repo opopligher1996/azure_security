@@ -89,7 +89,7 @@ app.use(function(err, req, res, next){
 app.post('/sms', function (req, res) {
   const body = req.Body;
   res.writeHead(200, { 'Content-Type' : 'application/json' });
-  response.end();
+  res.send('{ pageCount: -1 }');
 
 });
 
