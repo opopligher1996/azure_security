@@ -60,8 +60,9 @@ var initDb = function(callback) {
   });
 };
 
-app.get('/', function (req, res) {
-  res.render('index.ejs', { 'message': 'Hello there'});
+app.get('/:location', function (req, res) {
+  var location = req.params.location;
+  res.render('index.ejs', { 'message': location});
 });
 
 app.get('/pagecount', function (req, res) {
