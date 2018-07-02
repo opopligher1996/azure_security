@@ -89,13 +89,13 @@ app.use(function(err, req, res, next){
 app.post('/sms', function (req, res) {
   var body = "";
   req.on('data', function (chunk) {
-   body += chunk;
+    body = chunk;
+    GetResourceGroup(chunk);
   });
   req.on('end', function () {
-   console.log('body: ' + body);
-   var jsonObj = JSON.parse(body);
-  console.log(jsonObj.$key);
+   //var jsonObj = JSON.parse(body);
   })
+  console.log("finish = "+body);
   //resp.end('Hello, World!');
   res.render('index.ejs', { 'message': body});
 });
@@ -108,3 +108,7 @@ app.listen(port, ip);
 console.log('Server running on http://%s:%s', ip, port);
 
 module.exports = app ;
+
+function GetResourceGroup(chunk){
+  console.log("GetResourceGroup = "+chunk);
+}
