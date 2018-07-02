@@ -61,7 +61,7 @@ var initDb = function(callback) {
 };
 
 app.get('/', function (req, res) {
-  res.render('index.ejs', { title: 'Hey', message: 'Hello there!'});
+  res.render('index.ejs', { message: Hello there});
 });
 
 app.get('/pagecount', function (req, res) {
