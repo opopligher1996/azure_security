@@ -7,6 +7,8 @@ Object.assign=require('object-assign')
 
 app.engine('html', require('ejs').renderFile);
 app.use(morgan('combined'));
+app.set('views', 'views');
+app.set('view engine', 'pug');
 app.use(express.static('public'));
 app.use('/css', express.static('css'));
 
@@ -59,9 +61,7 @@ var initDb = function(callback) {
 };
 
 app.get('/', function (req, res) {
-  res.render('index.html',{
-    'url':'www.google.com'
-  });
+  res.render('index', { title: 'Hey', message: 'Hello there!'});
 });
 
 app.get('/pagecount', function (req, res) {
