@@ -99,9 +99,8 @@ app.use(function(err, req, res, next){
 });
 
 app.post('/sms', function (req, res) {
-  const body = req.body.Body
-  res.set('Content-Type', 'text/plain')
-  res.send(`You sent: ${body} to Express`)
+  const body = req;
+  console.log("req = "+req);
 });
 
 initDb(function(err){
