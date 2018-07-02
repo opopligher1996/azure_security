@@ -87,9 +87,17 @@ app.use(function(err, req, res, next){
 });
 
 app.post('/sms', function (req, res) {
-  const body = req.body;
-  //res.send(req.Body);
-  res.render('index.ejs', { 'message': req.body});
+  var body = "";
+  req.on('data', function (chunk) {
+   body += chunk;
+  });
+  req.on('end', function () {
+   console.log('body: ' + body);
+   var jsonObj = JSON.parse(body);
+  console.log(jsonObj.$key);
+  })
+  //resp.end('Hello, World!');
+  res.render('index.ejs', { 'message': body});
 });
 
 initDb(function(err){
