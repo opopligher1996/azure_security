@@ -100,7 +100,7 @@ app.use(function(err, req, res, next){
 
 app.post('/sms', function (req, res) {
   const body = req;
-  console.log("req = "+req);
+  res.send('{ pageCount: -1 }');
 });
 
 initDb(function(err){
