@@ -88,8 +88,8 @@ app.use(function(err, req, res, next){
 
 app.post('/sms', function (req, res) {
   const body = req.Body;
-  res.send(req.Body);
-
+  //res.send(req.Body);
+  res.render('index.ejs', { 'message': 'file'});
 });
 
 initDb(function(err){
